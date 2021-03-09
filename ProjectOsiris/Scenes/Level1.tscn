@@ -2,59 +2,15 @@
 
 [ext_resource path="res://Objects/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/chest_empty_open_anim_f0.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Ground.tres" type="TileSet" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 61.923, 6.09843 )
 
-[sub_resource type="TileSet" id=19]
-
 [node name="Level1" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 150.941, 135.805 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
-scale = Vector2( 7.67462, 1 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 0.420441, 1.68179 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2( 307.624, 174.504 )
-rotation = -0.526023
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
-scale = Vector2( 7.67462, 1 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2( 0.420441, 1.68179 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2( 469.971, 96.1623 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
-scale = Vector2( 7.67462, 1 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2( 0.420441, 1.68179 )
-shape = SubResource( 1 )
-
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2( 163.211, 53.6879 )
+position = Vector2( -84.8531, 62.6676 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -71,7 +27,8 @@ shape = SubResource( 1 )
 position = Vector2( 146.949, 74.0823 )
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 19 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
+cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( 65574, 0, 0, 327681, 0, 0 )
+tile_data = PoolIntArray( -65511, 1, 10, -65510, 1, 327682, -65509, 1, 327681, -65508, 1, 327681, -65507, 1, 327687, -65506, 1, 327686, -65505, 1, 327688, 25, 1, 393216, 26, 1, 393217, 27, 1, 393218, 28, 1, 393217, 29, 1, 393219, 30, 1, 393221, 31, 1, 393224, 65561, 1, 131072, 65567, 1, 131080, 131097, 1, 262147, 131103, 1, 262149, 262164, 1, 65546, 327702, 1, 65554, 393235, 1, 131074, 393236, 1, 131077, 393237, 1, 131078, 458770, 1, 196609, 458771, 1, 196610, 458772, 1, 196611, 458773, 1, 196614, 458774, 1, 196615, 524296, 1, 0, 524297, 1, 1, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 2, 524302, 1, 7, 524303, 1, 4, 524304, 1, 196609, 524305, 1, 196610, 524306, 1, 196611, 524307, 1, 196612, 524308, 1, 196612, 524309, 1, 196612, 524310, 1, 196613, 524311, 1, 196614, 524312, 1, 196615, 524313, 1, 8, 524314, 1, 8, 524315, 1, 0, 524316, 1, 6, 589832, 1, 65536, 589833, 1, 65537, 589834, 1, 65537, 589835, 1, 65537, 589836, 1, 65537, 589837, 1, 65538, 589838, 1, 65538, 589839, 1, 65539, 589840, 1, 196611, 589841, 1, 196612, 589842, 1, 196612, 589843, 1, 196612, 589844, 1, 196612, 589845, 1, 196612, 589846, 1, 196612, 589847, 1, 196612, 589848, 1, 196611, 589849, 1, 65539, 589850, 1, 65538, 589851, 1, 65537, 589852, 1, 65544, 1048598, 3, 0 )
