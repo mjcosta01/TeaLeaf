@@ -16,14 +16,13 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 
 [node name="Coin" type="KinematicBody2D"]
-position = Vector2( 116.541, 45.0271 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 0, 0.3 )
+scale = Vector2( 0.3, 0.4 )
 shape = SubResource( 2 )
