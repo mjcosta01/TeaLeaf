@@ -6,6 +6,7 @@ extends KinematicBody2D
 # var b = "text"
 export var movespeed = 50
 var dir = false
+var flag = false
 var vel = Vector2()
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,12 +14,18 @@ func _ready():
 func get_direction():
 	if dir == false:
 		get_node("SpriteStuff").set_flip_h(false)
-		vel.x += movespeed
+		vel.x = movespeed
 	else:
 		get_node("SpriteStuff").set_flip_h(true)
-		vel.x -= movespeed
+		vel.x = -movespeed
 	if is_on_wall():
-		dir = !dir
+		if flag == false:
+			dir = !dir
+			flag = true
+		else: 
+			yield(get_tree().create_timer(0.1), "timeout")
+			flag = false
+		
 func _physics_process(delta):
 	if vel.x == 0:
 		get_node("SpriteStuff").set_animation("Standby")

@@ -12,20 +12,19 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "Walking",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Standby",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Walking",
+"speed": 10.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 8.35202
-height = 8.09305
+height = 5.74421
 
 [node name="Eater_Demon" type="KinematicBody2D"]
 script = ExtResource( 9 )
@@ -33,7 +32,6 @@ script = ExtResource( 9 )
 [node name="SpriteStuff" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Standby"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

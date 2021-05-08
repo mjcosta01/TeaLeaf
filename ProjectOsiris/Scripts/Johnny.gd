@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+
 export var jump_speed = -400;
 export var runspeed = 100;
 export var gravity = 1200;
@@ -9,6 +10,7 @@ var max_health = 3;
 var vel = Vector2()
 
 var jumping = false
+
 
 
 func get_input():
