@@ -15,6 +15,9 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 
 [node name="Chest" type="KinematicBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )

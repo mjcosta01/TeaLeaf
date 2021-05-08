@@ -16,6 +16,9 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 
 [node name="Coin" type="KinematicBody2D"]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
