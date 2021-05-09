@@ -15,10 +15,23 @@ func update_health(health):
 	hp_array = get_children()
 	for i in health:
 		curr = hp_array[i] as Sprite
-		curr.visible = true
+		curr.z_index = 1;
 func lose_health(damage):
 	curr_health -= damage
 	hp_array = get_children()
 	for i in range(max_hp - 1, 0, -1):
 		curr = hp_array[i] as Sprite
 		curr.visible = true
+
+
+func _on_Johnny_took_damage(damage):
+	
+	curr_health -= damage
+	hp_array = get_children()
+	
+	for i in hp_array:
+		curr = i as Sprite
+		curr.z_index = -1
+		
+	update_health(curr_health);
+	pass # Replace with function body.

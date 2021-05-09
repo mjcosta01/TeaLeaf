@@ -5,6 +5,8 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 export var movespeed = 50
+export var is_monster = true
+export var gravity = 500
 var dir = false
 var flag = false
 var vel = Vector2()
@@ -27,6 +29,7 @@ func get_direction():
 			flag = false
 		
 func _physics_process(delta):
+	vel.y += gravity * delta
 	if vel.x == 0:
 		get_node("SpriteStuff").set_animation("Standby")
 	else:

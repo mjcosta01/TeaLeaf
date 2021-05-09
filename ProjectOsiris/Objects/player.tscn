@@ -38,11 +38,12 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 6.66776
-height = 5.55551
+radius = 3.23585
+height = 11.164
 
 [node name="Johnny" type="KinematicBody2D"]
-position = Vector2( 0, -3.18519 )
+position = Vector2( 0.471939, -2.00535 )
+collision_layer = 3
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
@@ -74,7 +75,9 @@ texture = ExtResource( 13 )
 position = Vector2( -200, -135 )
 texture = ExtResource( 13 )
 
-[node name="HealthNodes" type="Node2D" parent="Camera2D"]
+[node name="HealthNodes" type="Node2D" parent="Camera2D" groups=[
+"HUD",
+]]
 script = ExtResource( 12 )
 
 [node name="H1" type="Sprite" parent="Camera2D/HealthNodes"]
@@ -88,3 +91,4 @@ offset = Vector2( -220, -135 )
 [node name="H3" type="Sprite" parent="Camera2D/HealthNodes"]
 texture = ExtResource( 11 )
 offset = Vector2( -200, -135 )
+[connection signal="took_damage" from="." to="Camera2D/HealthNodes" method="_on_Johnny_took_damage"]
