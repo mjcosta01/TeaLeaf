@@ -14,9 +14,13 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=2]
 
+<<<<<<< HEAD
 [node name="Chest" type="KinematicBody2D" groups=[
 "Chest",
 ]]
+=======
+[node name="Chest" type="KinematicBody2D"]
+>>>>>>> origin/The-Cat's-Stuff
 __meta__ = {
 "_edit_group_": true
 }
