@@ -17,12 +17,13 @@ var in_trance = false
 var iframes = max_frames;
 #manage physics
 var vel = Vector2()
+var direction = 0;
 #manage signals
 signal took_damage(damage);
 signal gain_coin(coin);
 signal lose_coin(coin);
 signal buy_hammer(hammer);
-signal launch_hammer(hammer);
+signal launch_hammer(inst ,hammer);
 var jumping = false
 
 #object collision handler
@@ -59,9 +60,13 @@ func throw_hammer():
 	if ammo > 0:
 		var ham = HAMMER_TIME.instance();
 		ham.global_position = global_position;
+		if direction == 0:
+			ham.position.x += 16
+		else:
+			ham.position.x -= 16
 		get_parent().add_child(ham);
 		ammo -= 1;
-		emit_signal("launch_hammer", 1);
+		emit_signal("launch_hammer", ham, direction);
 		
 #handle keyboard inputs
 func get_input():
@@ -74,9 +79,11 @@ func get_input():
 	if right:
 		get_node("SpriteStuff").set_flip_h(false)
 		vel.x += runspeed
+		direction = 0;
 	if left: 
 		get_node("SpriteStuff").set_flip_h(true)
 		vel.x -= runspeed
+		direction = 1;
 	if jump and is_on_floor():
 		jumping = true
 		vel.y = jump_speed

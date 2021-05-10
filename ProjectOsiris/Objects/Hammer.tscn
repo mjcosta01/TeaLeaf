@@ -11,16 +11,17 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 2.7755, 10.8188 )
+[sub_resource type="SegmentShape2D" id=2]
+a = Vector2( -0.0831451, -7.41234 )
+b = Vector2( 0.0837097, 8.10518 )
 
-[node name="Hammer_Time" type="KinematicBody2D"]
-rotation = -6.28319
+[node name="Hammer_Time" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="SpriteStuff" type="AnimatedSprite" parent="."]
+scale = Vector2( 1, 0.7 )
 frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 0.707901 )
 shape = SubResource( 2 )
+[connection signal="body_entered" from="." to="." method="_on_Hammer_Time_body_entered"]
