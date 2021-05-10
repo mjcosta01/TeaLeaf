@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-[gd_scene load_steps=8 format=2]
-=======
 [gd_scene load_steps=7 format=2]
->>>>>>> origin/The-Cat's-Stuff
 
 [ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/coin_anim_f3.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/coin_anim_f2.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/coin_anim_f1.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/coin_anim_f0.png" type="Texture" id=4]
-<<<<<<< HEAD
-[ext_resource path="res://Scripts/Coin.gd" type="Script" id=5]
-=======
->>>>>>> origin/The-Cat's-Stuff
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -23,25 +15,11 @@ animations = [ {
 
 [sub_resource type="CircleShape2D" id=2]
 
-<<<<<<< HEAD
-[node name="Coin" type="KinematicBody2D" groups=[
-"Coin",
-]]
-script = ExtResource( 5 )
-=======
 [node name="Coin" type="KinematicBody2D"]
->>>>>>> origin/The-Cat's-Stuff
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-<<<<<<< HEAD
-frame = 2
-=======
 frame = 1
->>>>>>> origin/The-Cat's-Stuff
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
