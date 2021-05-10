@@ -23,8 +23,8 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
-height = 5.74421
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.16281, 10 )
 
 [node name="Eater_Demon" type="KinematicBody2D" groups=[
 "Monsters",

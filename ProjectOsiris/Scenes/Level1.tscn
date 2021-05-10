@@ -37,5 +37,5 @@ tile_data = PoolIntArray( 720893, 1, 131074, 720894, 1, 0, 720895, 1, 0, 786428,
 script = ExtResource( 5 )
 
 [node name="Eater_Demon" parent="." instance=ExtResource( 4 )]
-position = Vector2( 112.922, 189.5 )
+position = Vector2( 113.517, 189.5 )
 collision_layer = 7
