@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/exit_door.png-bf3cf04c0bdce53db024a8c92a05b017.image"
+
+[deps]
+
+source_file="res://Sprites/0x72_DungeonTilesetII_v1.3.1/exit_door.png"
+dest_files=[ "res://.import/exit_door.png-bf3cf04c0bdce53db024a8c92a05b017.image" ]
+
+[params]
+
