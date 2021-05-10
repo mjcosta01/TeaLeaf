@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/elf_m_idle_anim_f3.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/elf_m_idle_anim_f0.png" type="Texture" id=2]
@@ -13,6 +13,11 @@
 [ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/ui_heart_full.png" type="Texture" id=11]
 [ext_resource path="res://Scripts/HealthNodes.gd" type="Script" id=12]
 [ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/ui_heart_empty.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/bg.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/coin_anim_f0.png" type="Texture" id=15]
+[ext_resource path="res://Scripts/Money_UI.gd" type="Script" id=16]
+[ext_resource path="res://Scripts/Hammer_Counter.gd" type="Script" id=17]
+[ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/weapon_hammer.png" type="Texture" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -41,7 +46,9 @@ animations = [ {
 radius = 3.23585
 height = 11.164
 
-[node name="Johnny" type="KinematicBody2D"]
+[node name="Johnny" type="KinematicBody2D" groups=[
+"Player",
+]]
 position = Vector2( 0.471939, -2.00535 )
 collision_layer = 3
 script = ExtResource( 5 )
@@ -62,6 +69,42 @@ shape = SubResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
+
+[node name="Background" type="Sprite" parent="Camera2D"]
+position = Vector2( -189.757, -121.387 )
+scale = Vector2( 1, 0.85 )
+texture = ExtResource( 14 )
+
+[node name="coin_anim_f0" type="Sprite" parent="Camera2D/Background"]
+position = Vector2( -51.4034, -0.33725 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 15 )
+
+[node name="Money" type="Label" parent="Camera2D/Background"]
+margin_left = -42.1275
+margin_top = -6.38661
+margin_right = -2.12753
+margin_bottom = 7.61339
+text = "x 0"
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HammerTime" type="Sprite" parent="Camera2D/Background"]
+texture = ExtResource( 18 )
+
+[node name="Hammer_Counter" type="Label" parent="Camera2D/Background"]
+margin_left = 6.97073
+margin_top = -6.32513
+margin_right = 46.9707
+margin_bottom = 24.6749
+text = "x 3
+"
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NH1" type="Sprite" parent="Camera2D"]
 position = Vector2( -240, -135 )
@@ -91,4 +134,7 @@ offset = Vector2( -220, -135 )
 [node name="H3" type="Sprite" parent="Camera2D/HealthNodes"]
 texture = ExtResource( 11 )
 offset = Vector2( -200, -135 )
+[connection signal="buy_hammer" from="." to="Camera2D/Background/Hammer_Counter" method="_on_Johnny_buy_hammer"]
+[connection signal="gain_coin" from="." to="Camera2D/Background/Money" method="_on_Johnny_gain_coin"]
+[connection signal="launch_hammer" from="." to="Camera2D/Background/Hammer_Counter" method="_on_Johnny_launch_hammer"]
 [connection signal="took_damage" from="." to="Camera2D/HealthNodes" method="_on_Johnny_took_damage"]

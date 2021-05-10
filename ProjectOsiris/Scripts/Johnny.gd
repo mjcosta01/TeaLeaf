@@ -1,19 +1,31 @@
 extends KinematicBody2D
 
-
+#constants
 export var jump_speed = -400;
 export var runspeed = 100;
 export var gravity = 1200;
+const HAMMER_TIME = preload("res://Objects/Hammer.tscn");
+#parts of the game
 var curr_health = 3;
 var max_health = 3;
 var max_frames = 1200;
+#collectors
+var coins = 0;
+var ammo = 3;
+#manage iframes
 var in_trance = false
 var iframes = max_frames;
-#var Spr = get_node("SpriteStuff");
+#manage physics
 var vel = Vector2()
-signal took_damage(damage)
+#manage signals
+signal took_damage(damage);
+signal gain_coin(coin);
+signal lose_coin(coin);
+signal buy_hammer(hammer);
+signal launch_hammer(hammer);
 var jumping = false
 
+#object collision handler
 func handle_collision(col: KinematicCollision2D):
 	var par = col.get_collider()
 	if par.is_in_group("Monsters"):
@@ -26,6 +38,13 @@ func handle_collision(col: KinematicCollision2D):
 			print("boop");
 			get_hurt();
 			vel.y = -500;
+	elif par.is_in_group("Coin"):
+		if(!par.taken):
+			coins += 1;
+			emit_signal("gain_coin",1);
+			par.taken = true;
+		pass
+		par.queue_free();
 	return
 #while there are iframes still left, do not take more damage, otherwise take damage
 func get_hurt():
@@ -36,22 +55,34 @@ func get_hurt():
 	get_node("SpriteStuff").visible = false
 	in_trance = true;
 
+func throw_hammer():
+	if ammo > 0:
+		var ham = HAMMER_TIME.instance();
+		ham.global_position = global_position;
+		get_parent().add_child(ham);
+		ammo -= 1;
+		emit_signal("launch_hammer", 1);
+		
 #handle keyboard inputs
 func get_input():
 	vel.x = 0
 	var right = Input.is_action_pressed("right")
 	var left = Input.is_action_pressed("left")
 	var jump = Input.is_action_just_pressed("jump")
+	var attack = Input.is_action_just_pressed("attack");
 	
-	if jump and is_on_floor():
-		jumping = true
-		vel.y = jump_speed
 	if right:
 		get_node("SpriteStuff").set_flip_h(false)
 		vel.x += runspeed
 	if left: 
 		get_node("SpriteStuff").set_flip_h(true)
 		vel.x -= runspeed
+	if jump and is_on_floor():
+		jumping = true
+		vel.y = jump_speed
+	if attack:
+		throw_hammer();
+		
 
 #physic loop for the player
 func _physics_process(delta):
