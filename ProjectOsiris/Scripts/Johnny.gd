@@ -25,7 +25,11 @@ signal lose_coin(coin);
 signal buy_hammer(hammer);
 signal launch_hammer(inst ,hammer);
 var jumping = false
-
+################################################
+signal buy1()
+signal buy2()
+signal buy3()
+###############################################
 #object collision handler
 func handle_collision(col: KinematicCollision2D):
 	var par = col.get_collider()
@@ -34,7 +38,7 @@ func handle_collision(col: KinematicCollision2D):
 			if !in_trance:
 				par.queue_free();
 				vel.y = -300;
-				pass;
+				return;
 		elif !in_trance:
 			print("boop");
 			get_hurt();
@@ -50,7 +54,7 @@ func handle_collision(col: KinematicCollision2D):
 #while there are iframes still left, do not take more damage, otherwise take damage
 func get_hurt():
 	if in_trance:
-		pass
+		return
 	lose_health(1)
 	iframes = 0
 	get_node("SpriteStuff").visible = false
@@ -59,7 +63,7 @@ func get_hurt():
 func handle_coin():
 	coins += 1;
 	emit_signal("gain_coin",1);
-	pass
+	return
 func throw_hammer():
 	if ammo > 0:
 		var ham = HAMMER_TIME.instance();
@@ -113,7 +117,7 @@ func _physics_process(delta):
 	for i in get_slide_count():
 		var col = get_slide_collision(i)
 		handle_collision(col)
-		
+
 func _process(delta):
 	if in_trance:
 		pass;

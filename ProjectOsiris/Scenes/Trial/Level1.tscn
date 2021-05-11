@@ -5,7 +5,7 @@
 [ext_resource path="res://Objects/Ground.tres" type="TileSet" id=3]
 [ext_resource path="res://Objects/Coin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Objects/Chest.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Objects/Hammer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Shop.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Handler.gd" type="Script" id=7]
 [ext_resource path="res://Objects/Eater_Demon.tscn" type="PackedScene" id=8]
 
@@ -47,9 +47,15 @@ position = Vector2( 149.294, 190.826 )
 [node name="Coin3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 134.702, 190.265 )
 
-[node name="Hammer_Time" parent="." instance=ExtResource( 6 )]
-position = Vector2( 24.7008, 176.796 )
-
 [node name="Eater_Demon" parent="." instance=ExtResource( 8 )]
 position = Vector2( 447.12, 186.928 )
+
+[node name="Shop" parent="." instance=ExtResource( 6 )]
+margin_left = -94.1568
+margin_top = 48.7718
+margin_right = 43.8432
+margin_bottom = 111.772
+[connection signal="buy1" from="Johnny" to="Shop" method="_on_Johnny_buy1"]
+[connection signal="buy2" from="Johnny" to="Shop" method="_on_Johnny_buy2"]
+[connection signal="buy3" from="Johnny" to="Shop" method="_on_Johnny_buy3"]
 [connection signal="launch_hammer" from="Johnny" to="." method="_on_Johnny_launch_hammer"]

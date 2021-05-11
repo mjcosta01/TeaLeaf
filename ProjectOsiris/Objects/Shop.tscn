@@ -1,0 +1,132 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/Shop.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/coin_anim_f0.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/ui_heart_full.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/coin_anim_f3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/coin_anim_f1.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/coin_anim_f2.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/flask_big_blue.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/0x72_DungeonTilesetII_v1.3.1/frames/weapon_hammer.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Buy.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.20176, 23.4453 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Shop" type="Panel"]
+margin_right = 138.0
+margin_bottom = 63.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Item1" type="Sprite" parent="."]
+position = Vector2( 26.6967, 18.6877 )
+texture = ExtResource( 8 )
+
+[node name="Price1" type="Label" parent="Item1"]
+margin_left = -3.99548
+margin_top = 14.9627
+margin_right = 43.0045
+margin_bottom = 28.9627
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buy1" type="Sprite" parent="Item1"]
+position = Vector2( 26.8627, 12 )
+scale = Vector2( 0.337923, 0.337923 )
+texture = ExtResource( 9 )
+offset = Vector2( -81.5696, 69.3286 )
+
+[node name="Area2D" type="Area2D" parent="Item1/Buy1"]
+position = Vector2( -79.4936, -35.5111 )
+scale = Vector2( 2.95926, 2.95926 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item1/Buy1/Area2D"]
+position = Vector2( -0.701538, 20.7655 )
+shape = SubResource( 1 )
+
+[node name="Item2" type="Sprite" parent="."]
+position = Vector2( 74.7509, 17.7703 )
+texture = ExtResource( 3 )
+
+[node name="Price2" type="Label" parent="Item2"]
+margin_left = -5.20547
+margin_top = 15.8386
+margin_right = 34.7945
+margin_bottom = 29.8386
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buy2" type="Sprite" parent="Item2"]
+position = Vector2( 26.5132, 13.0577 )
+scale = Vector2( 0.337923, 0.337923 )
+texture = ExtResource( 9 )
+offset = Vector2( -81.5696, 69.3286 )
+
+[node name="Area2D2" type="Area2D" parent="Item2/Buy2"]
+position = Vector2( -219.833, -34.6807 )
+scale = Vector2( 2.95926, 2.95926 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item2/Buy2/Area2D2"]
+position = Vector2( 47.424, 20.9059 )
+shape = SubResource( 1 )
+
+[node name="Item3" type="Sprite" parent="."]
+position = Vector2( 118.801, 16.6855 )
+texture = ExtResource( 7 )
+
+[node name="Price3" type="Label" parent="Item3"]
+margin_left = -7.56509
+margin_top = 17.493
+margin_right = 32.4349
+margin_bottom = 31.493
+text = "10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buy3" type="Sprite" parent="Item3"]
+position = Vector2( 27.9233, 14.1426 )
+scale = Vector2( 0.337923, 0.337923 )
+texture = ExtResource( 9 )
+offset = Vector2( -81.5696, 69.3286 )
+
+[node name="Area2D2" type="Area2D" parent="Item3/Buy3"]
+position = Vector2( -355.606, -33.4351 )
+scale = Vector2( 2.95926, 2.95926 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item3/Buy3/Area2D2"]
+position = Vector2( 92.6031, 20.7655 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 17.0646, 39.2882 )
+frames = SubResource( 2 )
+frame = 3
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 62.4458, 39.4866 )
+frames = SubResource( 2 )
+frame = 3
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
+position = Vector2( 106.777, 39.3222 )
+frames = SubResource( 2 )
+frame = 3
+playing = true
