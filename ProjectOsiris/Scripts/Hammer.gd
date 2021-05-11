@@ -6,29 +6,21 @@ extends Area2D
 # var b = "text"
 export var direction = 0;
 #var gravity = 1200;
-var throw_speed = 100;
+var throw_speed = 300;
 var velocity = Vector2();
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	velocity.y -= 500;
-	velocity.x += throw_speed;
+	velocity.y -= 300;
 	pass # Replace with function body.
-
-func handle_collision(col: KinematicCollision2D):
-	var obj = col.get_collider()
-	if obj.is_in_group("Monsters"):
-		obj.queue_free();
-		queue_free();
-	if obj.is_in_group("Player"):
-		pass;
 
 
 func _physics_process(delta):
 	if direction == 0:
 		rotate(0.19);
 	else:
-		throw_speed = -500;
+		throw_speed = -300;
 		rotate(-0.19);
+	velocity.x = throw_speed;
 	velocity.y += gravity * delta;
 	position += velocity *delta;
 
@@ -45,5 +37,5 @@ func _on_Hammer_Time_body_entered(body):
 		body.queue_free();
 		queue_free();
 	if body.is_in_group("Player"):
-		pass;
+		return;
 	queue_free();

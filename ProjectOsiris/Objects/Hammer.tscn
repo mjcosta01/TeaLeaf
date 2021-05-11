@@ -16,6 +16,7 @@ a = Vector2( -0.0831451, -7.41234 )
 b = Vector2( 0.0837097, 8.10518 )
 
 [node name="Hammer_Time" type="Area2D"]
+gravity = 418.0
 script = ExtResource( 2 )
 
 [node name="SpriteStuff" type="AnimatedSprite" parent="."]

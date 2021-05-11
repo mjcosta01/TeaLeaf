@@ -56,6 +56,10 @@ func get_hurt():
 	get_node("SpriteStuff").visible = false
 	in_trance = true;
 
+func handle_coin():
+	coins += 1;
+	emit_signal("gain_coin",1);
+	pass
 func throw_hammer():
 	if ammo > 0:
 		var ham = HAMMER_TIME.instance();
@@ -63,7 +67,7 @@ func throw_hammer():
 		if direction == 0:
 			ham.position.x += 16
 		else:
-			ham.position.x -= 16
+			ham.position.x += 16
 		get_parent().add_child(ham);
 		ammo -= 1;
 		emit_signal("launch_hammer", ham, direction);

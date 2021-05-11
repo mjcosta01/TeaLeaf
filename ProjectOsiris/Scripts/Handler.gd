@@ -17,5 +17,5 @@ func _ready():
 
 
 func _on_Johnny_launch_hammer(inst, hammer):
-	
+	inst.direction = hammer;
 	pass # Replace with function body.
