@@ -12,14 +12,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "Walking",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Standby",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Walking",
 "speed": 10.0
 } ]
 
@@ -35,7 +35,7 @@ script = ExtResource( 9 )
 [node name="SpriteStuff" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Standby"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

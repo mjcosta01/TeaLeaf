@@ -17,6 +17,8 @@ func _ready():
 
 
 func _on_Coin_body_entered(body):
+	if !body.is_in_group("Player"):
+		return
 	if taken == true:
 		return;
 	taken = true;

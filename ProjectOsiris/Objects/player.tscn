@@ -73,6 +73,8 @@ position = Vector2( 0, 4.00903 )
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 100
+z_as_relative = false
 current = true
 zoom = Vector2( 0.5, 0.5 )
 

@@ -305,7 +305,6 @@ animations = [ {
 
 [node name="Johnny" parent="." instance=ExtResource( 1 )]
 position = Vector2( -26.2542, 165.77 )
-collision_layer = 3
 
 [node name="Coin" parent="." instance=ExtResource( 5 )]
 position = Vector2( 25.3751, 166.527 )
@@ -317,7 +316,6 @@ position = Vector2( 22.7539, 182.669 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 cell_y_sort = true
-show_collision = true
 format = 1
 tile_data = PoolIntArray( 393218, 1, 0, 458754, 1, 0, 524290, 1, 0, 589826, 1, 0, 655362, 1, 0, 720898, 0, 65537, 720899, 0, 65537, 720900, 0, 65537, 851963, 0, 65537, 851964, 0, 65537, 851965, 0, 65537, 851966, 0, 65537, 851967, 0, 65537, 786432, 0, 65537, 786433, 0, 65537, 786434, 0, 65537 )
 
@@ -325,60 +323,56 @@ tile_data = PoolIntArray( 393218, 1, 0, 458754, 1, 0, 524290, 1, 0, 589826, 1, 0
 position = Vector2( 10.9316, 111.839 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 8 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="FirePlate" type="AnimatedSprite" parent="."]
 position = Vector2( -67.6922, 184.997 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 13 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Chandelier" type="AnimatedSprite" parent="."]
 position = Vector2( -34.8972, 102.589 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 19 )
-frame = 2
 playing = true
 
 [node name="Candles" type="AnimatedSprite" parent="."]
 position = Vector2( -50.0334, 186.679 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 23 )
-frame = 2
 playing = true
 
 [node name="R_SkullLight" type="AnimatedSprite" parent="."]
 position = Vector2( 5.88626, 184.577 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 27 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="L_SkullLight" type="AnimatedSprite" parent="."]
 position = Vector2( -9.24991, 183.736 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 31 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="R_SkullsLight" type="AnimatedSprite" parent="."]
 position = Vector2( 8.82944, 139.169 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 35 )
-frame = 2
 playing = true
 
 [node name="L_SkullsLight" type="AnimatedSprite" parent="."]
 position = Vector2( -26.9087, 139.589 )
 scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 39 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Brasier" type="AnimatedSprite" parent="."]
 position = Vector2( -68.5332, 161.452 )
 frames = SubResource( 44 )
-frame = 2
 playing = true

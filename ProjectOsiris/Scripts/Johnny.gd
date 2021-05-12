@@ -78,20 +78,25 @@ func handle_shop(shopnum):
 	if action && shop == 1:
 		if coins >= 3:
 			coins -= 3;
+			Global.coins -= 3;
 			ammo += 1;
+			Global.hammers += 1;
 			emit_signal("lose_coin",3);
 			emit_signal("buy_hammer",1);
-			print("Hello")
 	elif action && shop == 2:
 		if coins >= 5 && curr_health < max_health:
 			coins -= 5;
+			Global.coins -= 5;
 			curr_health += 1;
+			Global.health += 1
 			emit_signal("healed_damage",1);
 			emit_signal("lose_coin",5);
 	elif action && shop == 3:
 		if coins >= 10:
 			runspeed += 30;
+			Global.movespeed += 30;
 			coins -= 10;
+			Global.coins -= 10;
 			emit_signal("lose_coin",10);
 	emit_signal("play_purchase");
 func throw_hammer():
@@ -104,6 +109,7 @@ func throw_hammer():
 			ham.position.x += 16
 		get_parent().add_child(ham);
 		ammo -= 1;
+		Global.hammers -= 1;
 		emit_signal("launch_hammer", ham, direction);
 		emit_signal("play_walk");
 		
@@ -123,7 +129,8 @@ func get_input():
 		get_node("SpriteStuff").set_flip_h(true)
 		vel.x -= runspeed
 		direction = 1;
-	if jump and is_on_floor():
+	#making jumping a bit more consistent
+	if jump and (is_on_floor() || (get_floor_normal().y - vel.y >= 0 and get_floor_normal().y - vel.y < 0.1)):
 		jumping = true
 		vel.y = jump_speed
 		emit_signal("play_jump");
@@ -131,7 +138,10 @@ func get_input():
 		throw_hammer();
 	if action:
 		handle_shop(shop);
-
+func _ready():
+	curr_health = Global.health;
+	coins = Global.coins;
+	ammo = Global.hammers;
 #physic loop for the player
 func _physics_process(delta):
 	if vel.x == 0:
@@ -146,6 +156,8 @@ func _physics_process(delta):
 		vel.y += gravity * delta
 	if jumping and is_on_floor():
 		jumping = false
+	if vel.y > 8000:
+		lose_health(max_health);
 	vel = move_and_slide(vel, Vector2(0,-1))	
 	for i in get_slide_count():
 		var col = get_slide_collision(i)
@@ -172,8 +184,9 @@ func gain_health(hp):
 		
 #lose health function emits damage signal so UI can handle and subtracts HP by damage
 func lose_health(hp):
-	curr_health -= hp
-	emit_signal("took_damage", hp)
+	curr_health -= hp;
+	Global.health = curr_health;
+	emit_signal("took_damage", hp);
 	if curr_health <= 0:
 		die()
 		curr_health = 0
