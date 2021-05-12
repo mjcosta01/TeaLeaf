@@ -20,16 +20,16 @@ var vel = Vector2()
 var direction = 0;
 #manage signals
 signal took_damage(damage);
+signal healed_damage(damage);
 signal gain_coin(coin);
 signal lose_coin(coin);
 signal buy_hammer(hammer);
 signal launch_hammer(inst ,hammer);
 var jumping = false
 ################################################
-signal buy1()
-signal buy2()
-signal buy3()
+var shop = 0;
 ###############################################
+var action;
 #object collision handler
 func handle_collision(col: KinematicCollision2D):
 	var par = col.get_collider()
@@ -64,6 +64,28 @@ func handle_coin():
 	coins += 1;
 	emit_signal("gain_coin",1);
 	return
+func handle_shop(shopnum):
+	shop = shopnum;
+	if shop == 0 || !action:
+		return;
+	if action && shop == 1:
+		if coins >= 3:
+			coins -= 3;
+			ammo += 1;
+			emit_signal("lose_coin",3);
+			emit_signal("buy_hammer",1);
+			print("Hello")
+	elif action && shop == 2:
+		if coins >= 5 && curr_health < max_health:
+			coins -= 5;
+			curr_health += 1;
+			emit_signal("healed_damage",1);
+			emit_signal("lose_coin",5);
+	elif action && shop == 3:
+		if coins >= 10:
+			runspeed += 30;
+			coins -= 10;
+			emit_signal("lose_coin",10);
 func throw_hammer():
 	if ammo > 0:
 		var ham = HAMMER_TIME.instance();
@@ -83,7 +105,7 @@ func get_input():
 	var left = Input.is_action_pressed("left")
 	var jump = Input.is_action_just_pressed("jump")
 	var attack = Input.is_action_just_pressed("attack");
-	
+	action = Input.is_action_just_pressed("action");
 	if right:
 		get_node("SpriteStuff").set_flip_h(false)
 		vel.x += runspeed
@@ -97,7 +119,8 @@ func get_input():
 		vel.y = jump_speed
 	if attack:
 		throw_hammer();
-		
+	if action:
+		handle_shop(shop);
 
 #physic loop for the player
 func _physics_process(delta):

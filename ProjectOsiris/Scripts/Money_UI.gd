@@ -17,3 +17,9 @@ func _on_Johnny_gain_coin(coin):
 	text = "x " + String(coins);
 	
 	pass # Replace with function body.
+
+
+func _on_Johnny_lose_coin(coin):
+	coins -= coin
+	text = "x " + String(coins);
+	pass # Replace with function body.

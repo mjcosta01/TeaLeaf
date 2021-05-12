@@ -21,13 +21,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Shop" type="Panel"]
-margin_right = 138.0
-margin_bottom = 63.0
+[node name="Shop" type="Polygon2D"]
+color = Color( 0.337255, 0.129412, 0.129412, 1 )
+polygon = PoolVector2Array( 8, 0, 136, 0, 136, 64, 8, 64 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Item1" type="Sprite" parent="."]
 position = Vector2( 26.6967, 18.6877 )
@@ -49,11 +46,15 @@ scale = Vector2( 0.337923, 0.337923 )
 texture = ExtResource( 9 )
 offset = Vector2( -81.5696, 69.3286 )
 
-[node name="Area2D" type="Area2D" parent="Item1/Buy1"]
+[node name="B1" type="Area2D" parent="Item1/Buy1" groups=[
+"Buy1",
+"Shop",
+]]
 position = Vector2( -79.4936, -35.5111 )
 scale = Vector2( 2.95926, 2.95926 )
+z_as_relative = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Item1/Buy1/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item1/Buy1/B1"]
 position = Vector2( -0.701538, 20.7655 )
 shape = SubResource( 1 )
 
@@ -77,11 +78,15 @@ scale = Vector2( 0.337923, 0.337923 )
 texture = ExtResource( 9 )
 offset = Vector2( -81.5696, 69.3286 )
 
-[node name="Area2D2" type="Area2D" parent="Item2/Buy2"]
+[node name="B2" type="Area2D" parent="Item2/Buy2" groups=[
+"Buy2",
+"Shop",
+]]
 position = Vector2( -219.833, -34.6807 )
 scale = Vector2( 2.95926, 2.95926 )
+z_as_relative = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Item2/Buy2/Area2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item2/Buy2/B2"]
 position = Vector2( 47.424, 20.9059 )
 shape = SubResource( 1 )
 
@@ -105,28 +110,38 @@ scale = Vector2( 0.337923, 0.337923 )
 texture = ExtResource( 9 )
 offset = Vector2( -81.5696, 69.3286 )
 
-[node name="Area2D2" type="Area2D" parent="Item3/Buy3"]
+[node name="B3" type="Area2D" parent="Item3/Buy3" groups=[
+"Buy3",
+"Shop",
+]]
 position = Vector2( -355.606, -33.4351 )
 scale = Vector2( 2.95926, 2.95926 )
+z_as_relative = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Item3/Buy3/Area2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item3/Buy3/B3"]
 position = Vector2( 92.6031, 20.7655 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 17.0646, 39.2882 )
 frames = SubResource( 2 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( 62.4458, 39.4866 )
 frames = SubResource( 2 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
 position = Vector2( 106.777, 39.3222 )
 frames = SubResource( 2 )
-frame = 3
+frame = 2
 playing = true
+[connection signal="body_entered" from="Item1/Buy1/B1" to="." method="_on_B1_body_entered"]
+[connection signal="body_exited" from="Item1/Buy1/B1" to="." method="_on_B1_body_exited"]
+[connection signal="body_entered" from="Item2/Buy2/B2" to="." method="_on_B2_body_entered"]
+[connection signal="body_exited" from="Item2/Buy2/B2" to="." method="_on_B2_body_exited"]
+[connection signal="body_entered" from="Item3/Buy3/B3" to="." method="_on_B3_body_entered"]
+[connection signal="body_exited" from="Item3/Buy3/B3" to="." method="_on_B3_body_exited"]

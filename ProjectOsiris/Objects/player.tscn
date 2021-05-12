@@ -136,5 +136,7 @@ texture = ExtResource( 11 )
 offset = Vector2( -200, -135 )
 [connection signal="buy_hammer" from="." to="Camera2D/Background/Hammer_Counter" method="_on_Johnny_buy_hammer"]
 [connection signal="gain_coin" from="." to="Camera2D/Background/Money" method="_on_Johnny_gain_coin"]
+[connection signal="healed_damage" from="." to="Camera2D/HealthNodes" method="_on_Johnny_healed_damage"]
 [connection signal="launch_hammer" from="." to="Camera2D/Background/Hammer_Counter" method="_on_Johnny_launch_hammer"]
+[connection signal="lose_coin" from="." to="Camera2D/Background/Money" method="_on_Johnny_lose_coin"]
 [connection signal="took_damage" from="." to="Camera2D/HealthNodes" method="_on_Johnny_took_damage"]

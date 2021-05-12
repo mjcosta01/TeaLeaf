@@ -35,3 +35,9 @@ func _on_Johnny_took_damage(damage):
 		
 	update_health(curr_health);
 	pass # Replace with function body.
+
+
+func _on_Johnny_healed_damage(damage):
+	curr_health += damage;
+	update_health(curr_health);
+	pass # Replace with function body.

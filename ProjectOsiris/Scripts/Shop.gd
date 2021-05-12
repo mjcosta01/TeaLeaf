@@ -1,4 +1,4 @@
-extends Panel
+extends Polygon2D
 
 
 # Declare member variables here. Examples:
@@ -37,4 +37,34 @@ func _on_Johnny_buy2():
 
 
 func _on_Johnny_buy3():
+	pass # Replace with function body.
+
+
+func _on_B1_body_entered(body):
+	get_tree().call_group("Player","handle_shop",1);
+	pass # Replace with function body.
+
+
+func _on_B2_body_entered(body):
+	get_tree().call_group("Player","handle_shop",2);
+	pass # Replace with function body.
+
+
+func _on_B3_body_entered(body):
+	get_tree().call_group("Player","handle_shop",3);
+	pass # Replace with function body.
+
+
+func _on_B1_body_exited(body):
+	get_tree().call_group("Player","handle_shop",0);
+	pass # Replace with function body.
+
+
+func _on_B2_body_exited(body):
+	get_tree().call_group("Player","handle_shop",0);
+	pass # Replace with function body.
+
+
+func _on_B3_body_exited(body):
+	get_tree().call_group("Player","handle_shop",0);
 	pass # Replace with function body.
