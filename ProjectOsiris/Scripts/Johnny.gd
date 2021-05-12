@@ -22,6 +22,7 @@ var direction = 0;
 signal play_jump();
 signal play_walk();
 signal play_hit();
+signal update_hp(hp);
 signal play_coin();
 signal play_purchase();
 signal took_damage(damage);
@@ -46,14 +47,14 @@ func handle_collision(col: KinematicCollision2D):
 				vel.y = -300;
 				return;
 		elif !in_trance:
-			print("boop");
 			get_hurt();
 			vel.y = -500;
-	elif par.is_in_group("Coin"):
-		if(!par.taken):
-			coins += 1;
-			emit_signal("gain_coin",1);
-			par.taken = true;
+	elif par.is_in_group("OneShot"):
+		if col.position.y > position.y + 12:
+			if !in_trance:
+				emit_signal("play_hit");
+				die();
+				return;
 		pass
 		par.queue_free();
 	return
@@ -68,6 +69,7 @@ func get_hurt():
 
 func handle_coin():
 	coins += 1;
+	Global.coins = coins;
 	emit_signal("play_coin");
 	emit_signal("gain_coin",1);
 	return
@@ -104,10 +106,11 @@ func throw_hammer():
 		var ham = HAMMER_TIME.instance();
 		ham.global_position = global_position;
 		if direction == 0:
-			ham.position.x += 16
+			ham.position.x += 8
 		else:
-			ham.position.x += 16
+			ham.position.x += 8
 		get_parent().add_child(ham);
+		ham.direction = direction;
 		ammo -= 1;
 		Global.hammers -= 1;
 		emit_signal("launch_hammer", ham, direction);
@@ -142,6 +145,8 @@ func _ready():
 	curr_health = Global.health;
 	coins = Global.coins;
 	ammo = Global.hammers;
+	runspeed = Global.movespeed;
+	emit_signal("update_hp",curr_health);
 #physic loop for the player
 func _physics_process(delta):
 	if vel.x == 0:
@@ -156,7 +161,7 @@ func _physics_process(delta):
 		vel.y += gravity * delta
 	if jumping and is_on_floor():
 		jumping = false
-	if vel.y > 8000:
+	if vel.y > 4000:
 		lose_health(max_health);
 	vel = move_and_slide(vel, Vector2(0,-1))	
 	for i in get_slide_count():
@@ -192,5 +197,6 @@ func lose_health(hp):
 		curr_health = 0
 		
 func die():
-	print("I died")
+	Global.health = 3;
+	Global.goto_scene("res://Scenes/Trial/Level1.tscn");
 	pass

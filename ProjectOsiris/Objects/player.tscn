@@ -171,3 +171,4 @@ stream = ExtResource( 24 )
 [connection signal="play_purchase" from="." to="AudioStreams" method="_on_Johnny_play_purchase"]
 [connection signal="play_walk" from="." to="AudioStreams" method="_on_Johnny_play_walk"]
 [connection signal="took_damage" from="." to="Camera2D/HealthNodes" method="_on_Johnny_took_damage"]
+[connection signal="update_hp" from="." to="Camera2D/HealthNodes" method="_on_Johnny_update_hp"]

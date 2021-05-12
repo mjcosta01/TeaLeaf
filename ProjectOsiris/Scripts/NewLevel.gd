@@ -1,7 +1,8 @@
-extends StaticBody2D
+extends Area2D
 
 
 export var levelID = 0
+export var path = "res://Scenes/Trial/Level2.tscn";
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -21,4 +22,7 @@ func _ready():
 
 
 func _on_Area2D_body_entered(body):
-	pass # Replace with function body.
+	if !body.is_in_group("Player"):
+		return;
+	Global.goto_scene(path);
+	

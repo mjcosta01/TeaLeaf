@@ -15,6 +15,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	
 	if direction == 0:
 		rotate(0.19);
 	else:
