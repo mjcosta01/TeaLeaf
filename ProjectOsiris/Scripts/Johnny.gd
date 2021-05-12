@@ -19,6 +19,11 @@ var iframes = max_frames;
 var vel = Vector2()
 var direction = 0;
 #manage signals
+signal play_jump();
+signal play_walk();
+signal play_hit();
+signal play_coin();
+signal play_purchase();
 signal took_damage(damage);
 signal healed_damage(damage);
 signal gain_coin(coin);
@@ -36,6 +41,7 @@ func handle_collision(col: KinematicCollision2D):
 	if par.is_in_group("Monsters"):
 		if col.position.y > position.y + 12:
 			if !in_trance:
+				emit_signal("play_hit");
 				par.queue_free();
 				vel.y = -300;
 				return;
@@ -62,6 +68,7 @@ func get_hurt():
 
 func handle_coin():
 	coins += 1;
+	emit_signal("play_coin");
 	emit_signal("gain_coin",1);
 	return
 func handle_shop(shopnum):
@@ -86,6 +93,7 @@ func handle_shop(shopnum):
 			runspeed += 30;
 			coins -= 10;
 			emit_signal("lose_coin",10);
+	emit_signal("play_purchase");
 func throw_hammer():
 	if ammo > 0:
 		var ham = HAMMER_TIME.instance();
@@ -97,6 +105,7 @@ func throw_hammer():
 		get_parent().add_child(ham);
 		ammo -= 1;
 		emit_signal("launch_hammer", ham, direction);
+		emit_signal("play_walk");
 		
 #handle keyboard inputs
 func get_input():
@@ -117,6 +126,7 @@ func get_input():
 	if jump and is_on_floor():
 		jumping = true
 		vel.y = jump_speed
+		emit_signal("play_jump");
 	if attack:
 		throw_hammer();
 	if action:

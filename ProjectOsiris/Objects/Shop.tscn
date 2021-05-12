@@ -125,19 +125,19 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 17.0646, 39.2882 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( 62.4458, 39.4866 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
 position = Vector2( 106.777, 39.3222 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
 [connection signal="body_entered" from="Item1/Buy1/B1" to="." method="_on_B1_body_entered"]
 [connection signal="body_exited" from="Item1/Buy1/B1" to="." method="_on_B1_body_exited"]
