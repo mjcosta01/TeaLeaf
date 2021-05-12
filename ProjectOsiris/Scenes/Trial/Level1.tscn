@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Objects/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Environment.tres" type="TileSet" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Objects/Hammer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Handler.gd" type="Script" id=7]
 [ext_resource path="res://Objects/Eater_Demon.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/ExitDoor.tscn" type="PackedScene" id=9]
 
 [node name="Level1" type="Node2D"]
 position = Vector2( -14.592, -0.561234 )
@@ -52,4 +53,8 @@ position = Vector2( 24.7008, 176.796 )
 
 [node name="Eater_Demon" parent="." instance=ExtResource( 8 )]
 position = Vector2( 447.12, 186.928 )
+
+[node name="ExitDoor" parent="." instance=ExtResource( 9 )]
+position = Vector2( 762.876, 190.868 )
 [connection signal="launch_hammer" from="Johnny" to="." method="_on_Johnny_launch_hammer"]
+[connection signal="body_entered" from="ExitDoor" to="ExitDoor" method="_on_ExitDoor_body_entered"]
